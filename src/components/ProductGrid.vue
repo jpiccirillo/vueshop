@@ -11,6 +11,11 @@ export default {
   created() {
     this.$store.dispatch(constants.PRODUCTS_FETCH)
   },
+  methods: {
+      buy(id) {
+        this.$store.commit(constants.SAVE_TO_CART, id)
+      }
+  }
 }
 </script>
 
@@ -22,7 +27,7 @@ export default {
         <h6 class="card-subtitle mb-2 text-muted">{{ product.price }}</h6>
         <p class="card-text">{{ product.description }}</p>
       </div>
-      <div :class="['card-footer bg-primary text-white text-center', $style.cardFooter]">
+      <div :class="['card-footer bg-primary text-white text-center', $style.cardFooter]" @click="buy(product.id)">
         Buy me!
       </div>
     </div>

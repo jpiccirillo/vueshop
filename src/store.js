@@ -11,6 +11,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     products: [],
+    cart: {}
   },
   mutations: {
     [constants.PRODUCTS_DELETE](state, productId) {
@@ -28,6 +29,17 @@ export default new Vuex.Store({
     },
     [constants.PRODUCTS_SET](state, products) {
       state.products = products
+    },
+    [constants.DELETE_FROM_CART](state, productId) {
+        delete state.cart[productId]
+    },
+    [constants.SAVE_TO_CART](state, productId) {
+        const cartProduct = state.cart[productId] || {
+            ...state.products.find(p => p.id === productId),
+            count: 0
+        }
+        cartProduct.count++
+        state.cart[productId] = cartProduct
     },
   },
   actions: {
@@ -50,7 +62,7 @@ export default new Vuex.Store({
   plugins: [
     createPersistedState({
       key: 'vueshop',
-      paths: ['products'],
+      paths: ['products', 'cart'],
     }),
   ],
 })

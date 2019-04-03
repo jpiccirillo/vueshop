@@ -5,6 +5,7 @@
         <div class="navbar-nav">
           <RouterLink active-class="active" class="nav-item nav-link" to="/" exact>Home</RouterLink>
           <RouterLink active-class="active" class="nav-item nav-link" to="/admin">Admin</RouterLink>
+           <RouterLink active-class="active" class="nav-item nav-link right" to="/cart">Go to Cart</RouterLink>
         </div>
       </div>
     </nav>

@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Admin from './views/Admin.vue'
 import ProductList from '@/components/ProductList'
 import ProductEdit from '@/components/ProductEdit'
+import ShoppingCart from '@/components/ShoppingCart'
 
 Vue.use(Router)
 
@@ -15,6 +16,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: ShoppingCart
     },
     {
       path: '/admin',
